@@ -758,6 +758,22 @@ func TestText(t *testing.T) {
 	OneTestFile(t, "docs/text.xml")
 }
 
+func TestDocx(t *testing.T) {
+	s := DocTrim{}
+	data, err := s.Process("docs/test.docx")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	fileInfo, err := os.Stat("docs/test.docx")
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	log.Printf("docs/test.docx %d->%d", fileInfo.Size(), len(data))
+}
+
 func TestEmptyToSelfClosing(t *testing.T) {
 	input := `<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:pBdr hash="1"></w:pBdr><w:tabs><w:tab w:val="left" w:leader="none" w:pos="2835"></w:tab></w:tabs><w:spacing hash="4"></w:spacing><w:ind w:firstLine="709"></w:ind><w:jc w:val="left"></w:jc><w:rPr hash="7"></w:rPr></w:pPr><w:r><w:tab hash="9"></w:tab><w:tab ref="9"></w:tab></w:r><w:r hash="b"></w:r></w:p></w:document>`
 	s := DocTrim{}
