@@ -1,2 +1,2 @@
 # DocTrim
-Compree ooxml file
+Compress ooxml file
