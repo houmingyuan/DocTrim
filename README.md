@@ -1,0 +1,2 @@
+# DocTrim
+Compree ooxml file
